@@ -55,7 +55,7 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "@duality.solutions/x11-hash-js": "^1.0.2", // TODO argon2d js module
+    "@duality.solutions/argon2s-hash-js": "1.0.0", // TODO argon2d js module
     "bloom-filter": "^0.2.0",
     "bn.js": "=4.11.8",
     "bs58": "=4.0.1",
