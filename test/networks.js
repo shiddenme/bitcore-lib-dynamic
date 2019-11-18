@@ -20,18 +20,15 @@ describe('Networks', function() {
 
   it('will enable/disable regtest Network', function() {
     networks.enableRegtest();
-    networks.testnet.networkMagic.should.deep.equal(Buffer.from('fcc1b7dc', 'hex'));
-    networks.testnet.port.should.equal(19994);
+    networks.testnet.networkMagic.should.deep.equal(Buffer.from('2f32153f', 'hex'));
+    networks.testnet.port.should.equal(33500);
     networks.testnet.dnsSeeds.should.deep.equal([]);
     networks.testnet.regtestEnabled.should.equal(true);
 
     networks.disableRegtest();
-    networks.testnet.networkMagic.should.deep.equal(Buffer.from('cee2caff', 'hex'));
-    networks.testnet.port.should.equal(19999);
+    networks.testnet.networkMagic.should.deep.equal(Buffer.from('2f321540', 'hex'));
+    networks.testnet.port.should.equal(33400);
     networks.testnet.dnsSeeds.should.deep.equal([
-     'testnet-seed.darkcoin.io',
-     'testnet-seed.dashdot.io',
-     'test.dnsseed.masternode.io'
     ]);
   });
 
@@ -104,14 +101,14 @@ describe('Networks', function() {
   });
 
   it('tests only for the specified key', function() {
-    expect(networks.get(0x8c, 'pubkeyhash')).to.equal(networks.testnet);
-    expect(networks.get(0x8c, 'privatekey')).to.equal(undefined);
+    expect(networks.get(0x30, 'pubkeyhash')).to.equal(networks.testnet);
+    expect(networks.get(0x30, 'privatekey')).to.equal(undefined);
   });
 
   it('can test for multiple keys', function() {
-    expect(networks.get(0x8c, ['pubkeyhash', 'scripthash'])).to.equal(networks.testnet);
-    expect(networks.get(0x13, ['pubkeyhash', 'scripthash'])).to.equal(networks.testnet);
-    expect(networks.get(0x8c, ['privatekey', 'port'])).to.equal(undefined);
+    expect(networks.get(0x30, ['pubkeyhash', 'scripthash'])).to.equal(networks.testnet);
+    expect(networks.get(0xA, ['pubkeyhash', 'scripthash'])).to.equal(networks.testnet);
+    expect(networks.get(0x30, ['privatekey', 'port'])).to.equal(undefined);
   });
 
   it('converts to string using the "name" property', function() {
