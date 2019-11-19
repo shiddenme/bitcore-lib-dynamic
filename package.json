@@ -1,5 +1,5 @@
 {
-  "name": "@duality-solutions/dynamic-lib",
+  "name": "@duality-solutions/bitcore-lib-dynamic",
   "version": "0.1.0",
   "description": "A pure and powerful JavaScript Dynamic library.",
   "author": "Duality Blockchain Solutions LLC. <support@duality.solutions>",
@@ -45,12 +45,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/duality.solutions/dynamic-lib.git"
+    "url": "https://github.com/duality.solutions/bitcore-lib-dynamic.git"
   },
   "bugs": {
-    "url": "https://github.com/duality.solutions/dynamic-lib/issues"
+    "url": "https://github.com/duality.solutions/bitcore-lib-dynamic/issues"
   },
-  "homepage": "https://github.com/duality.solutions/dynamic-lib",
+  "homepage": "https://github.com/duality.solutions/bitcore-lib-dynamic",
   "browser": {
     "request": "browser-request"
   },

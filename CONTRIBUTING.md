@@ -1,6 +1,6 @@
-# Contributing to dynamic-lib
+# Contributing to bitcore-lib-dynamic
 
-We're working hard to make *dynamic-lib* the most powerful JavaScript library for working with Dynamic. Our goal is to have *dynamic-lib* be a library that can be used by anyone interested in Dynamic, and to level expertise differences with great design and documentation.
+We're working hard to make *bitcore-lib-dynamic* the most powerful JavaScript library for working with Dynamic. Our goal is to have *bitcore-lib-dynamic* be a library that can be used by anyone interested in Dynamic, and to level expertise differences with great design and documentation.
 
 ## Community
 
@@ -18,7 +18,7 @@ Ideally, please make sure to run:
 
 ## Design Guidelines
 
-These are some global design goals in dynamic-lib that any change must adhere.
+These are some global design goals in bitcore-lib-dynamic that any change must adhere.
 
 ### D1 - Naming Matters
 
@@ -89,7 +89,7 @@ var bufferUtil = require('./util/buffer');
 
 #### G7 - Standard Methods
 
-When possible, dynamic-lib objects should have standard methods on an instance prototype:
+When possible, bitcore-lib-dynamic objects should have standard methods on an instance prototype:
 * `toObject/toJSON` - A plain JavaScript object that `JSON.stringify` can call
 * `toString` - A string representation of the instance
 * `toBuffer` - A hex Buffer
@@ -99,7 +99,7 @@ These should have a matching static method that can be used for instantiation:
 * `fromString` - Should be able to instantiate with output from `toString`
 * `fromBuffer` - Should likewise be able to instantiate from output from `toBuffer`
 
-`JSON.stringify` and `JSON.parse` are expected to be handled outside of the scope of dynamic-lib methods. For example, calling `JSON.stringify` on an dynamic-lib object will behave as expected and call `transaction.toJSON()` and then stringify it:
+`JSON.stringify` and `JSON.parse` are expected to be handled outside of the scope of bitcore-lib-dynamic methods. For example, calling `JSON.stringify` on an bitcore-lib-dynamic object will behave as expected and call `transaction.toJSON()` and then stringify it:
 
 ```javascript
 var transactionString = JSON.stringify(transaction);
@@ -243,7 +243,7 @@ git checkout -b remove/some-file
 
 We expect pull requests to be rebased to the master branch before merging:
 ```sh
-git remote add duality-solutions git@github.com:duality-solutions/dynamic-lib.git
+git remote add duality-solutions git@github.com:duality-solutions/bitcore-lib-dynamic.git
 git pull --rebase duality-solutions master
 ```
 
@@ -255,11 +255,11 @@ git push origin your_branch_name
 git push origin feature/some-new-stuff
 git push origin fix/some-bug
 ```
-Finally go to [github.com/duality-solutions/dynamic-lib](https://github.com/duality-solutions/dynamic-lib) in your web browser and issue a new pull request.
+Finally go to [github.com/duality-solutions/bitcore-lib-dynamic](https://github.com/duality-solutions/bitcore-lib-dynamic) in your web browser and issue a new pull request.
 
-Main contributors will review your code and possibly ask for changes before your code is pulled in to the main repository.  We'll check that all tests pass, review the coding style, and check for general code correctness. If everything is OK, we'll merge your pull request and your code will be part of dynamic-lib.
+Main contributors will review your code and possibly ask for changes before your code is pulled in to the main repository.  We'll check that all tests pass, review the coding style, and check for general code correctness. If everything is OK, we'll merge your pull request and your code will be part of bitcore-lib-dynamic.
 
 If you have any questions feel free to post them to
-[github.com/duality-solutions/dynamic-lib/issues](https://github.com/duality-solutions/dynamic-lib/issues).
+[github.com/duality-solutions/bitcore-lib-dynamic/issues](https://github.com/duality-solutions/bitcore-lib-dynamic/issues).
 
 Thanks for your time and code!

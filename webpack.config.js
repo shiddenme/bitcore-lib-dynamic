@@ -15,7 +15,7 @@ const commonJSConfig = {
 const rawConfig = Object.assign({}, commonJSConfig, {
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'dynamic-lib.js',
+    filename: 'bitcore-lib-dynamic.js',
     library: 'dynamic',
     libraryTarget: 'umd',
   }
@@ -23,7 +23,7 @@ const rawConfig = Object.assign({}, commonJSConfig, {
 const uglifiedConfig = Object.assign({}, commonJSConfig, {
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'dynamic-lib.min.js',
+    filename: 'bitcore-lib-dynamic.min.js',
     library: 'dynamic',
     libraryTarget: 'umd',
   },

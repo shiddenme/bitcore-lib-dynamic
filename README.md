@@ -1,7 +1,7 @@
 # Dynamic Library
 
-[![Build Status](https://img.shields.io/travis/duality-solutions/dynamic-lib.svg?branch=master)](https://travis-ci.org/duality-solutions/dynamic-lib)
-[![NPM Package](https://img.shields.io/npm/v/@duality-solutions/dynamic-lib.svg)](https://www.npmjs.org/package/@duality-solutions/dynamic-lib)
+[![Build Status](https://img.shields.io/travis/duality-solutions/bitcore-lib-dynamic.svg?branch=master)](https://travis-ci.org/duality-solutions/bitcore-lib-dynamic)
+[![NPM Package](https://img.shields.io/npm/v/@duality-solutions/bitcore-lib-dynamic.svg)](https://www.npmjs.org/package/@duality-solutions/bitcore-lib-dynamic)
 
 > A pure and powerful JavaScript Dynamic library.
 
@@ -19,29 +19,29 @@ The decentralized nature of the Dynamic network allows for highly resilient Dyna
 ### NodeJS
 
 ```
-npm install @duality-solutions/dynamic-lib
+npm install @duality-solutions/bitcore-lib-dynamic
 ```
 
 ### Browser
 
-See the section below to generate your own bundle, or download the pre-generated [minified file](dist/dynamic-lib.min.js)
+See the section below to generate your own bundle, or download the pre-generated [minified file](dist/bitcore-lib-dynamic.min.js)
 
 #### Building the Browser Bundle
 
-To build a dynamic-lib full bundle for the browser:
+To build a bitcore-lib-dynamic full bundle for the browser:
 
 ```sh
 npm run build
 ```
 
-This will generate files named `dynamic-lib.js` and `dynamic-lib.min.js` in the `dist/` folder.
+This will generate files named `bitcore-lib-dynamic.js` and `bitcore-lib-dynamic.min.js` in the `dist/` folder.
 
 ## Usage
 
 ### Browser
 
 ```
-<script src='./dist/dynamic-lib.min.js' type="text/javascript"></script>
+<script src='./dist/bitcore-lib-dynamic.min.js' type="text/javascript"></script>
 <script>
   const PrivateKey = dynamic.PrivateKey;
   const privateKey = new PrivateKey();
@@ -64,8 +64,8 @@ Some functionality is implemented as a module that can be installed separately:
 ### Development & Tests
 
 ```sh
-git clone https://github.com/duality-solutions/dynamic-lib
-cd dynamic-lib
+git clone https://github.com/duality-solutions/bitcore-lib-dynamic
+cd bitcore-lib-dynamic
 npm install
 ```
 
@@ -111,7 +111,7 @@ Some examples can be found [here](docs/examples.md), below is a list of direct l
 
 ## Contributing
 
-Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/duality-solutions/dynamic-lib/blob/master/CONTRIBUTING.md) file.
+Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/duality-solutions/bitcore-lib-dynamic/blob/master/CONTRIBUTING.md) file.
 
 ## License
 

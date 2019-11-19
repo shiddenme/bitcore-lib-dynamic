@@ -16,6 +16,6 @@ describe('#versionGuard', function() {
       sinon.stub(console, 'warn');
       bitcore.versionGuard('version');
       should.equal(console.warn.calledOnce,true);
-      should.equal(console.warn.calledWith('More than one instance of dynamic-lib found. Please make sure that you are not mixing instances of classes of the different versions of dynamic.'),true)
+      should.equal(console.warn.calledWith('More than one instance of bitcore-lib-dynamic found. Please make sure that you are not mixing instances of classes of the different versions of dynamic.'),true)
   });
 });
