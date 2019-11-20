@@ -129,7 +129,7 @@ To remove all outputs, you can use `clearOutputs()`, which preserves change outp
 There are a series of methods used for serialization:
 - `toObject`: Returns a plain JavaScript object with no methods and enough information to fully restore the state of this transaction. Using other serialization methods (except for `toJSON`) will cause some information to be lost.
 - `toJSON`: Will be called when using `JSON.stringify` to return JSON-encoded string using the output from `toObject`.
-- `toString` or `uncheckedSerialize`: Returns an hexadecimal serialization of the transaction, in the [serialization format for Bitcoin](https://bitcoin.org/en/developer-reference#raw-transaction-format).
+- `toString` or `uncheckedSerialize`: Returns an hexadecimal serialization of the transaction, in the [serialization format for Dynamic](https://bitcoin.org/en/developer-reference#raw-transaction-format).
 - `serialize`: Does a series of checks before serializing the transaction
 - `inspect`: Returns a string with some information about the transaction (currently a string formatted as `<Transaction 000...000>`, that only shows the serialized value of the transaction.
 - `toBuffer`: Serializes the transaction for sending over the wire in the Dynamic network

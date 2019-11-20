@@ -46,7 +46,7 @@ bitcore.util.merkleTree = require('./lib/util/merkletree');
 // errors thrown by the library
 bitcore.errors = require('./lib/errors');
 
-// main bitcoin library
+// main dynamic library
 bitcore.Address = require('./lib/address');
 bitcore.Block = require('./lib/block');
 bitcore.MerkleBlock = require('./lib/block/merkleblock');

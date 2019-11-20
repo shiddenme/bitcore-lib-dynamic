@@ -112,7 +112,7 @@ describe('Transaction', function() {
 
   it('toObject/fromObject with p2sh signatures and custom fee', function() {
     var tx = new Transaction()
-      .from(p2shUtxoWith1BTC, [p2shPublicKey1, p2shPublicKey2, p2shPublicKey3], 2)
+      .from(p2shUtxoWith1DYN, [p2shPublicKey1, p2shPublicKey2, p2shPublicKey3], 2)
       .to([{address: toAddress, satoshis: 50000}])
       .fee(15000)
       .change(changeAddress)
@@ -270,7 +270,7 @@ describe('Transaction', function() {
   var public1 = new PrivateKey(private1).publicKey;
   var public2 = new PrivateKey(private2).publicKey;
 
-  var simpleUtxoWith1BTC = {
+  var simpleUtxoWith1DYN = {
     address: fromAddress,
     txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
     outputIndex: 1,
@@ -278,7 +278,7 @@ describe('Transaction', function() {
     satoshis: 1e8
   };
 
-  var doubleUTxoWith1BTC = [{
+  var doubleUTxoWith1DYN = [{
     address: fromAddress,
     txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
     outputIndex: 1,
@@ -292,7 +292,7 @@ describe('Transaction', function() {
     satoshis: 1e8
   }]
 
-  var quadrupleUTxoWith1BTC = [{
+  var quadrupleUTxoWith1DYN = [{
     address: fromAddress,
     txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
     outputIndex: 1,
@@ -317,7 +317,7 @@ describe('Transaction', function() {
     script: Script.buildPublicKeyHashOut(fromAddress).toString(),
     satoshis: 1e8
   }];
-  var quintupleUtxoWith1BTC =
+  var quintupleUtxoWith1DYN =
     [{
       address: fromAddress,
       txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
@@ -367,7 +367,7 @@ describe('Transaction', function() {
     p2shPublicKey2,
     p2shPublicKey3
   ], 2, 'testnet');
-  var p2shUtxoWith1BTC = {
+  var p2shUtxoWith1DYN = {
     address: p2shAddress.toString(),
     txId: 'a477af6b2667c29670467e4e0728b685ee07b240235771862318e29ddbe58458',
     outputIndex: 0,
@@ -379,8 +379,8 @@ describe('Transaction', function() {
 
     it('adds just once one utxo', function() {
       var tx = new Transaction();
-      tx.from(simpleUtxoWith1BTC);
-      tx.from(simpleUtxoWith1BTC);
+      tx.from(simpleUtxoWith1DYN);
+      tx.from(simpleUtxoWith1DYN);
       tx.inputs.length.should.equal(1);
     });
 
@@ -409,7 +409,7 @@ describe('Transaction', function() {
       });
       it('passes result of input.isValidSignature', function() {
         var tx = new Transaction(tx_1_hex);
-        tx.from(simpleUtxoWith1BTC);
+        tx.from(simpleUtxoWith1DYN);
         tx.inputs[0].isValidSignature = sinon.stub().returns(true);
         var sig = {
           inputIndex: 0
@@ -553,7 +553,7 @@ describe('Transaction', function() {
     });
     it('can avoid checked serialize', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(fromAddress, 1);
       expect(function() {
         return transaction.serialize();
@@ -575,7 +575,7 @@ describe('Transaction', function() {
   describe('checked serialize', function() {
     it('fails if no change address was set', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, 1);
       expect(function() {
         return transaction.serialize();
@@ -583,7 +583,7 @@ describe('Transaction', function() {
     });
     it('fails if a high fee was set', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .change(changeAddress)
         .fee(50000000)
         .to(toAddress, 40000000);
@@ -593,7 +593,7 @@ describe('Transaction', function() {
     });
     it('fails if a dust output is created', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, 5459)
         .change(changeAddress)
         .sign(privateKey);
@@ -603,7 +603,7 @@ describe('Transaction', function() {
     });
     it('doesn\'t fail if a dust output is not dust', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, 5460)
         .change(changeAddress)
         .sign(privateKey);
@@ -613,7 +613,7 @@ describe('Transaction', function() {
     });
     it('doesn\'t fail if a dust output is an op_return', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .addData('not dust!')
         .change(changeAddress)
         .sign(privateKey);
@@ -623,7 +623,7 @@ describe('Transaction', function() {
     });
     it('fails when outputs and fee don\'t add to total input', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, 99900000)
         .fee(99999)
         .sign(privateKey);
@@ -633,7 +633,7 @@ describe('Transaction', function() {
     });
     it('checks output amount before fee errors', function() {
       var transaction = new Transaction();
-      transaction.from(simpleUtxoWith1BTC);
+      transaction.from(simpleUtxoWith1DYN);
       transaction
         .to(toAddress, 10000000000000)
         .change(changeAddress)
@@ -645,7 +645,7 @@ describe('Transaction', function() {
     });
     it('will throw fee error with disableMoreOutputThanInput enabled (but not triggered)', function() {
       var transaction = new Transaction();
-      transaction.from(simpleUtxoWith1BTC);
+      transaction.from(simpleUtxoWith1DYN);
       transaction
         .to(toAddress, 90000000)
         .change(changeAddress)
@@ -661,7 +661,7 @@ describe('Transaction', function() {
       var buildSkipTest = function(builder, check, expectedError) {
         return function() {
           var transaction = new Transaction();
-          transaction.from(simpleUtxoWith1BTC);
+          transaction.from(simpleUtxoWith1DYN);
           builder(transaction);
 
           var options = {};
@@ -706,7 +706,7 @@ describe('Transaction', function() {
             .change(changeAddress);
         }, 'disableIsFullySigned', errors.Transaction.MissingSignatures
       ));
-      it('can skip the check that avoids spending more bitcoins than the inputs for a transaction', buildSkipTest(
+      it('can skip the check that avoids spending more DYN than the inputs for a transaction', buildSkipTest(
         function(transaction) {
           return transaction
             .to(toAddress, 10000000000000)
@@ -824,7 +824,7 @@ describe('Transaction', function() {
   describe('serialization of inputs', function() {
     it('can serialize and deserialize a P2PKH input', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC);
+        .from(simpleUtxoWith1DYN);
       var deserialized = new Transaction(transaction.toObject());
       expect(deserialized.inputs[0] instanceof Transaction.Input.PublicKeyHash).to.equal(true);
     });
@@ -891,25 +891,25 @@ describe('Transaction', function() {
   describe('removeInput and removeOutput', function() {
     it('can remove an input by index', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC);
+        .from(simpleUtxoWith1DYN);
       transaction.inputs.length.should.equal(1);
-      transaction.inputAmount.should.equal(simpleUtxoWith1BTC.satoshis);
+      transaction.inputAmount.should.equal(simpleUtxoWith1DYN.satoshis);
       transaction.removeInput(0);
       transaction.inputs.length.should.equal(0);
       transaction.inputAmount.should.equal(0);
     });
     it('can remove an input by transaction id', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC);
+        .from(simpleUtxoWith1DYN);
       transaction.inputs.length.should.equal(1);
-      transaction.inputAmount.should.equal(simpleUtxoWith1BTC.satoshis);
-      transaction.removeInput(simpleUtxoWith1BTC.txId, simpleUtxoWith1BTC.outputIndex);
+      transaction.inputAmount.should.equal(simpleUtxoWith1DYN.satoshis);
+      transaction.removeInput(simpleUtxoWith1DYN.txId, simpleUtxoWith1DYN.outputIndex);
       transaction.inputs.length.should.equal(0);
       transaction.inputAmount.should.equal(0);
     });
     it('fails if the index provided is invalid', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC);
+        .from(simpleUtxoWith1DYN);
       expect(function() {
         transaction.removeInput(2);
       }).to.throw(errors.Transaction.InvalidIndex);
@@ -982,21 +982,21 @@ describe('Transaction', function() {
     });
     it('has a non-max sequenceNumber for effective date locktime tx', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .lockUntilDate(date);
       transaction.inputs[0].sequenceNumber
         .should.equal(Transaction.Input.DEFAULT_LOCKTIME_SEQNUMBER);
     });
     it('has a non-max sequenceNumber for effective blockheight locktime tx', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .lockUntilBlockHeight(blockHeight);
       transaction.inputs[0].sequenceNumber
         .should.equal(Transaction.Input.DEFAULT_LOCKTIME_SEQNUMBER);
     });
     it('should serialize correctly for date locktime ', function() {
       var transaction= new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .lockUntilDate(date);
       var serialized_tx = transaction.uncheckedSerialize();
       var copy = new Transaction(serialized_tx);
@@ -1006,7 +1006,7 @@ describe('Transaction', function() {
     });
     it('should serialize correctly for a block height locktime', function() {
       var transaction= new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .lockUntilBlockHeight(blockHeight);
       var serialized_tx = transaction.uncheckedSerialize();
       var copy = new Transaction(serialized_tx);
@@ -1041,14 +1041,14 @@ describe('Transaction', function() {
   describe('inputAmount + outputAmount', function() {
     it('returns correct values for simple transaction', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, 40000000);
       transaction.inputAmount.should.equal(100000000);
       transaction.outputAmount.should.equal(40000000);
     });
     it('returns correct values for transaction with change', function() {
       var transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .change(changeAddress)
         .to(toAddress, 10000);
       transaction.inputAmount.should.equal(100000000);
@@ -1070,7 +1070,7 @@ describe('Transaction', function() {
 
     beforeEach(function() {
       transaction = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to([
           {address: toAddress, satoshis: tenth},
           {address: toAddress, satoshis: fourth}
@@ -1131,7 +1131,7 @@ describe('Transaction', function() {
 
     it('removes all outputs and maintains the transaction in order', function() {
       var tx = new Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(toAddress, tenth)
         .to([
           {address: toAddress, satoshis: fourth},
@@ -1207,7 +1207,7 @@ describe('Transaction', function() {
       tx.outputs[2].script.toString().should.equal('0x01');
     });
 
-    describe('bitcoinjs fixtures', function() {
+    describe('dynamicjs fixtures', function() {
 
       var fixture = require('../data/bip69.json');
 
@@ -1257,7 +1257,7 @@ describe('Transaction', function() {
     describe('#enableRBF', function() {
       it('only enable inputs not already enabled (0xffffffff)', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
@@ -1270,7 +1270,7 @@ describe('Transaction', function() {
       });
       it('enable for inputs with 0xffffffff and 0xfffffffe', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
@@ -1305,7 +1305,7 @@ describe('Transaction', function() {
       });
       it('determine opt-out with 0xfffffffe', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000 + 1e8}])
           .fee(15000)
@@ -1317,7 +1317,7 @@ describe('Transaction', function() {
       });
       it('determine opt-out with 0xffffffff', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000 + 1e8}])
           .fee(15000)
@@ -1329,7 +1329,7 @@ describe('Transaction', function() {
       });
       it('determine opt-in with 0xfffffffd (first input)', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000 + 1e8}])
           .fee(15000)
@@ -1341,7 +1341,7 @@ describe('Transaction', function() {
       });
       it('determine opt-in with 0xfffffffd (second input)', function() {
         var tx = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .from(simpleUtxoWith100000Satoshis)
           .to([{address: toAddress, satoshis: 50000 + 1e8}])
           .fee(15000)
@@ -1408,7 +1408,7 @@ describe('Transaction', function() {
     });
     it('Should be possible to serialize and deserialize special transaction', function() {
       var transaction = Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(fromAddress, 10000)
         .change(fromAddress)
         .setType(RegisteredTransactionTypes.TRANSACTION_SUBTX_REGISTER)
@@ -1424,7 +1424,7 @@ describe('Transaction', function() {
     it('Should not be possible to set extra payload if transaction type is not set', function () {
       expect(function () {
         var transaction = Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .to(fromAddress, 10000)
           .change(fromAddress)
           .setExtraPayload(validPayload)
@@ -1433,7 +1433,7 @@ describe('Transaction', function() {
     });
     it('Should be possible to serialize and deserialize special transaction from object', function() {
       var transaction = Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(fromAddress, 10000)
         .change(fromAddress)
         .setType(RegisteredTransactionTypes.TRANSACTION_SUBTX_REGISTER)
@@ -1448,7 +1448,7 @@ describe('Transaction', function() {
     });
     it('Should throw when trying to serialize special transaction without any payload', function () {
       var transaction = Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(fromAddress, 10000)
         .change(fromAddress)
         .setType(Transaction.TYPES.TRANSACTION_SUBTX_REGISTER);
@@ -1459,7 +1459,7 @@ describe('Transaction', function() {
     });
     it('Should throw when extra payload is set, but special transaction type is not set', function () {
       var transaction = Transaction()
-        .from(simpleUtxoWith1BTC)
+        .from(simpleUtxoWith1DYN)
         .to(fromAddress, 10000)
         .change(fromAddress)
         .setType(Transaction.TYPES.TRANSACTION_SUBTX_REGISTER)
@@ -1750,21 +1750,21 @@ describe('Transaction', function() {
     describe('isSimpleTransaction', function() {
       it('Should return true if a transaction is qualified to be a simple transaction', function () {
         var transaction = new Transaction()
-          .from(simpleUtxoWith1BTC)
+          .from(simpleUtxoWith1DYN)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
           .change(changeAddress)
           .sign(privateKey);
 
         var transactionDouble = new Transaction()
-          .from(doubleUTxoWith1BTC)
+          .from(doubleUTxoWith1DYN)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
           .change(changeAddress)
           .sign(privateKey);
 
         var transactionQuadruple = new Transaction()
-          .from(quadrupleUTxoWith1BTC)
+          .from(quadrupleUTxoWith1DYN)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
           .change(changeAddress)
@@ -1776,7 +1776,7 @@ describe('Transaction', function() {
       });
       it('Should return false if a transaction is not qualified to be a simple transaction', function() {
         var transactionQuintuple = new Transaction()
-          .from(quintupleUtxoWith1BTC)
+          .from(quintupleUtxoWith1DYN)
           .to([{address: toAddress, satoshis: 50000}])
           .fee(15000)
           .change(changeAddress)

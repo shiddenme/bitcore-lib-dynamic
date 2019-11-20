@@ -19,7 +19,7 @@ var dataRawBlockBuffer = fs.readFileSync('test/data/blk19976-testnet.dat');
 var dataRawBlockBinary = fs.readFileSync('test/data/blk19976-testnet.dat', 'binary');
 var dataJson = fs.readFileSync('test/data/blk19976-testnet.json').toString();
 var data = require('../data/blk19976-testnet');
-var dataBlocks = require('../data/bitcoind/blocks');
+var dataBlocks = require('../data/dynamicd/blocks');
 
 describe('Block', function() {
 

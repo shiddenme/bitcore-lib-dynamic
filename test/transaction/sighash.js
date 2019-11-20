@@ -20,7 +20,7 @@ describe('sighash', function() {
       // First element is just a row describing the next ones
       return;
     }
-    it('test vector from bitcoind #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
+    it('test vector from dynamicd #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
       var txbuf = Buffer.from(vector[0], 'hex');
       var scriptbuf = Buffer.from(vector[1], 'hex');
       var subscript = Script(scriptbuf);

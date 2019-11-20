@@ -1,4 +1,4 @@
-# Dynamic Library
+# Bitcore Library Dynamic
 
 [![Build Status](https://img.shields.io/travis/duality-solutions/bitcore-lib-dynamic.svg?branch=master)](https://travis-ci.org/duality-solutions/bitcore-lib-dynamic)
 [![NPM Package](https://img.shields.io/npm/v/@duality-solutions/bitcore-lib-dynamic.svg)](https://www.npmjs.org/package/@duality-solutions/bitcore-lib-dynamic)

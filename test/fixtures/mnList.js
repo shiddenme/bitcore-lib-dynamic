@@ -383,7 +383,7 @@ module.exports = {
           "confirmedHash": "0000004c7bba7e46b583731f0930c9a3b0033e268f87bccf9a5e44793d634a5a",
           "service": "63.33.238.85:20042",
           "pubKeyOperator": "86f43bc634d21567e456fea9ff6556e361d00da0ee46955244009847e492402c8dc82b4247330fab96ac9f0c538496b2",
-          "votingAddress": "yeueeuyrqLsEndqXCBTCZeGV9qaeBCYJ9m",
+          "votingAddress": "yeueeuyrqLsEndqXCDYNZeGV9qaeBCYJ9m",
           "isValid": true
         },
         {
@@ -1445,7 +1445,7 @@ module.exports = {
           "confirmedHash": "0000004c7bba7e46b583731f0930c9a3b0033e268f87bccf9a5e44793d634a5a",
           "service": "63.33.238.85:20042",
           "pubKeyOperator": "86f43bc634d21567e456fea9ff6556e361d00da0ee46955244009847e492402c8dc82b4247330fab96ac9f0c538496b2",
-          "votingAddress": "yeueeuyrqLsEndqXCBTCZeGV9qaeBCYJ9m",
+          "votingAddress": "yeueeuyrqLsEndqXCDYNZeGV9qaeBCYJ9m",
           "isValid": true
         },
         {
@@ -2800,7 +2800,7 @@ module.exports = {
           "confirmedHash": "0000004c7bba7e46b583731f0930c9a3b0033e268f87bccf9a5e44793d634a5a",
           "service": "63.33.238.85:20042",
           "pubKeyOperator": "86f43bc634d21567e456fea9ff6556e361d00da0ee46955244009847e492402c8dc82b4247330fab96ac9f0c538496b2",
-          "votingAddress": "yeueeuyrqLsEndqXCBTCZeGV9qaeBCYJ9m",
+          "votingAddress": "yeueeuyrqLsEndqXCDYNZeGV9qaeBCYJ9m",
           "isValid": true
         },
         {
